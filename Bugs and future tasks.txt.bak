@@ -22,4 +22,3 @@ BUGS
 This section describes known bugs, that should be repaired in future.
 1. Navigation menu page link loses css class active when adding book or author.
 2. It should be possible for book to have many authors not just one like right now.
-3. Do something with these ugly client side validation pupups.
