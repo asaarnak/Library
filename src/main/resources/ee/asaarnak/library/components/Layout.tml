@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>${title}</title>
+  </head>
+  <script>
+  	jQuery.noConflict();
+  </script>
+  <body>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a t:type="pagelink" t:page="index" class="brand">${message:brand}</a>
+          <ul class="nav">
+            <li t:type="loop" source="pageNames.keySet()" value="pageName" class="prop:classForPageName">
+                <t:pagelink page="prop:pageName">${pageNames.get(pageName)}</t:pagelink>
+            </li>
+          </ul>
+          <div class="pull-right">
+	          <t:loop source="supportedLocales" value="supportedLocale" index="var:index">
+		        <t:if test="var:index">, </t:if>
+		        <a href="#" t:type="eventlink" t:event="switchLocale" t:context="supportedLocale.toString()">${supportedLocale.getDisplayName()}</a>
+		      </t:loop>.
+	      </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>${title}</h1>
+        <p><t:body/></p>
+      </div>
+      
+      <t:if test="sidebar">
+		 <h2>${sidebarTitle}</h2>
+		 <t:delegate to="sidebar"/>
+	  </t:if>
+	  
+      <footer>
+        <p id="copyright">&copy; Allar Saarnak 2011</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>

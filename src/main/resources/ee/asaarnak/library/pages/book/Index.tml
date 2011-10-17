@@ -1,0 +1,45 @@
+<html t:type="layout" title="${message:title}"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+	<script>
+		jQuery(document).ready(function() 
+		    { 
+		        jQuery("#myTable").tablesorter(); 
+		    } 
+		); 
+	</script>
+	
+    <ul>
+      <li><t:pagelink page="book/insert">${message:create}</t:pagelink></li>
+    </ul>
+	
+	<t:if test="books">
+    	<table id="myTable" class="zebra-striped">
+	        <thead>
+	            <tr>
+	                <th>${message:heading}</th>
+	                <th>${message:actions}</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr t:type="Loop" t:source="books" t:value="book">
+	                <td><a t:type="pageLink" t:page="book/view" t:context="book.id" href="#">${book.heading}</a></td>
+	                <td>
+	                    <a t:type="pageLink" t:page="book/update" t:context="book.id" href="#" class="btn primary">${message:submit.update}</a>
+	                    &#160;
+						<a t:type="eventLink" t:event="Delete" t:context="[book.id,book.version]" t:mixins="Confirm" t:message="${message:confirm.delete} ${book.heading}?" class="btn danger">${message:submit.delete}</a>
+	                </td>
+	            </tr>
+	        </tbody>
+	 	</table><br/>
+	    <p:else>
+		    <p>${message:empty}</p>
+	    </p:else>
+	</t:if>
+	<br/>
+	
+	<t:if test="errorMessage">
+        <span class="label important">${errorMessage}</span><br/><br/>
+    </t:if>
+</html>

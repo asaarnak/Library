@@ -1,0 +1,17 @@
+<html t:type="layout" title="${titleMessage}"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+	<t:form t:id="book">
+		<table>
+	        <tr>
+	            <th><t:label for="heading">${message:heading}</t:label></th>
+	            <td><t:textfield t:id="heading" t:value="book.heading" /></td>
+	        </tr>
+	        <tr>
+	            <th><t:label for="authors">${message:authors}</t:label></th>
+	            <td><t:select t:id="authors" value="book.author" model="authorSelectModel"/></td>
+	        </tr>
+	    </table>
+		<t:submit t:id="submit" value="${submitButtonMessage}" class="btn success"/>
+	</t:form>
+</html>

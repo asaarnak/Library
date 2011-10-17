@@ -1,0 +1,25 @@
+<html t:type="layout" title="${titleMessage}"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <table>
+        <tr>
+            <th>${message:fullName-label}</th>
+            <td>${author.fullName}</td>
+        </tr>
+        <tr>
+            <th>${message:books}</th>
+            <td>
+            	<t:if test="author.books">
+	            	<p t:type="Loop" t:source="author.books" t:value="book">
+	            		${book.heading}
+	            	</p>
+            		<p:else>
+            			${message:noBooks}
+            		</p:else>
+            		<br/>
+            	</t:if>
+            </td>
+        </tr>
+    </table>
+</html>

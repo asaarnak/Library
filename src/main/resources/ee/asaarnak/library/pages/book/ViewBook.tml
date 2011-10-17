@@ -1,0 +1,15 @@
+<html t:type="layout" title="${titleMessage}"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+      
+	<table>
+        <tr>
+            <th>${message:heading}</th>
+            <td>${book.heading}</td>
+        </tr>
+        <tr>
+            <th>${message:authors}</th>
+            <td>${book.author.fullName}</td>
+        </tr>
+    </table>
+</html>

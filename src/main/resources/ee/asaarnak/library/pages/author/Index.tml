@@ -1,0 +1,48 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	  t:type="layout" title="${message:title}"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+	<script>
+	jQuery(document).ready(function() 
+	    { 
+	        jQuery("#myTable").tablesorter(); 
+	    } 
+	); 
+	</script>
+    <ul>
+      <li><t:pagelink page="author/insert">${message:create}</t:pagelink></li>
+    </ul>
+    
+    <t:if test="authors">
+    	<table id="myTable" class="zebra-striped">
+	        <thead>
+	            <tr>
+	                <th>${message:fullName}</th>
+	                <th>${message:actions}</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr t:type="Loop" t:source="authors" t:value="author">
+	                <td><a t:type="pageLink" t:page="author/view" t:context="author.id" href="#">${author.fullName}</a></td>
+	                <!--<td><t:output value="person.startDate" format="dateFormat"/></td>-->
+	                <td>
+	                    <a t:type="pageLink" t:page="author/update" t:context="author.id" href="#" class="btn primary">${message:submit.update}</a>
+	                    &#160;
+						<t:if test="canDeleteAuthor">
+							<a t:type="eventLink" t:event="Delete" t:context="[author.id,author.version]" t:mixins="Confirm" t:message="${message:confirm.delete} ${author.fullName}?" class="btn danger">${message:submit.delete}</a>
+							<p:else>
+								<span class="btn danger disabled" href="#">${message:submit.delete}</span>
+							</p:else>
+						</t:if>
+	                </td>
+	            </tr>
+	        </tbody>
+	 	</table><br/>
+	    <p:else>
+		    <p>${message:empty}</p>
+	    </p:else>
+	</t:if><br/>
+	<t:if test="errorMessage">
+        <span class="label important">${errorMessage}</span><br/><br/>
+    </t:if>
+</html>

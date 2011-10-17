@@ -1,0 +1,37 @@
+apply plugin: 'eclipse'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+tapestryReleaseVersion = '5.3-beta-22'
+postgresqlVersion = '9.1-901.jdbc4'
+
+repositories {
+    mavenCentral()
+    mavenRepo urls: "https://repository.apache.org/content/groups/staging"
+    flatDir(dirs: file("/src/main/webapp/WEB-INF/lib/postgresql/postgresql/$postgresqlVersion"))
+}
+
+dependencies {
+
+	providedCompile	'javax.servlet:servlet-api:2.5@jar'
+    
+	compile			"org.apache.tapestry:tapestry-hibernate:$tapestryReleaseVersion",
+					"org.apache.tapestry:tapestry-yuicompressor:$tapestryReleaseVersion",
+					"org.apache.tapestry:tapestry-beanvalidator:$tapestryReleaseVersion",
+					'javax.transaction:transaction-api:1.1',
+					'commons-collections:commons-collections:3.2.1',
+					'org.slf4j:slf4j-log4j12:1.6.2',
+					'org.apache.commons:commons-lang3:3.0.1',
+					":postgresql:$postgresqlVersion"
+    
+	testCompile		'org.testng:testng:5.14.9',
+					'org.easymock:easymock:3.0',
+					"org.apache.tapestry:tapestry-test:$tapestryReleaseVersion"
+}
+
+test {
+	useTestNG()
+	options.suites("src/test/resources/testng.xml")
+}

@@ -1,0 +1,62 @@
+INSTALLATION MANUAL
+-------------------
+The purpose of this document is to explain how to deploy 
+this project to Jetty or Tomcat servlet container with PostgreSQL database.
+
+
+DEMO
+----
+http://library.jelastic.com
+
+
+MINIMAL SETUP
+-------------
+This section describes how to get the web application up 
+and running with minimal steps.
+
+1. Download and set up Java JRE 7, verify with "java -version" at command line.
+2. Download and set up Jetty(6,7,8 tested) or Tomcat(7 tested).
+3. Download and set up PostrgeSQL(8.4,9.1 tested) 
+	    and set up user: "postgresql"; password "postgresql"; database "postgresql";
+4. Deploy Library.war file to application server.
+ 4.1 Copy Library.war to Tomcat/webapps and run tomcat.
+ 4.2 Copy Library.war to Jetty/webapps and run jetty.
+5. http://localhost:8080/Library/
+
+
+SETUP BY BUILDING THE PROJECT
+-----------------------------
+This section describes how to build the project from source and 
+get it up and running with Tomcat or Jetty. You can choose to build with maven or gradle. I like gradle :)
+
+1. Download and set up Java JDK 7
+2. Download and set up Jetty(6,7,8 tested) or Tomcat(7 tested).
+3. Download and set up PostrgeSQL(8.4,9.1 tested) 
+	    and set up user: "postgresql"; password "postgresql"; database "postgresql";
+4. Download and set up Google Chrome(14 tested), used for selenium integration tests.
+
+5. Build with Maven
+ 5.1 Download and set up Maven (2.2.1,3.0.1 tested)
+ 5.2 Run from command line with "mvn jetty:run" or "mvn jetty:run-war"
+ 5.3 Build from command line with "mvn install"
+ 5.4 Locate war file from Library\target folder.
+
+6. Build with Gradle
+ 6.1 Download and set up Gradle (1.0M3 tested)
+ 6.2 Run from command line with "gradle jettyRun" or "gradle jettyRunWar"
+ 6.3 Build from command line with "gradle war"
+ 6.4 Locate war file from Library\build\libs folder.
+
+7. Deploy Library.war file to application server.
+ 7.1 Copy Library.war to Tomcat\webapps folder and run tomcat.
+ 7.2 Copy Library.war to Jetty\webapps folder and run jetty.
+
+8. http://localhost:8080/Library/
+
+9. Running unit and selenium integration tests
+ 9.1 mvn surefire:test
+ 9.2 gradle test
+
+10. Building eclipse project and classpath files.
+ 10.1 mvn eclipse:eclipse
+ 10.2 gradle eclipse
