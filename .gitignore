@@ -1,4 +1,5 @@
 #Ignore some generated files and folders.
+*.bak
 .project
 .classpath
 .gradle/
