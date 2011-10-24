@@ -2,7 +2,6 @@ package ee.asaarnak.library.entities.base;
 
 import static java.util.UUID.randomUUID;
 
-import java.util.Objects;
 import java.util.UUID;
 
 import javax.persistence.Id;
@@ -58,14 +57,14 @@ public abstract class PersistentHibernateImpl implements Persistent {
     }
     if (obj instanceof PersistentHibernateImpl) {
       PersistentHibernateImpl other = (PersistentHibernateImpl) obj;
-      return Objects.equals(id, other.id);
+      return (id == other.id) || (id != null && id.equals(other.id));
     }
     return false;
   }
   
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return id != null ? id.hashCode() : 0;
   }
   
   @Override
