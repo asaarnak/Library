@@ -14,7 +14,7 @@ MINIMAL SETUP
 This section describes how to get the web application up 
 and running with minimal steps.
 
-1. Download and set up Java JRE 7, verify with "java -version" at command line.
+1. Download and set up Java JRE 6, verify with "java -version" at command line.
 2. Download and set up Jetty(6,7,8 tested) or Tomcat(7 tested).
 3. Download and set up PostrgeSQL(8.4,9.1 tested) 
 	    and set up user: "postgresql"; password "postgresql"; database "postgresql";
@@ -29,7 +29,7 @@ SETUP BY BUILDING THE PROJECT
 This section describes how to build the project from source and 
 get it up and running with Tomcat or Jetty. You can choose to build with maven or gradle. I like gradle :)
 
-1. Download and set up Java JDK 7
+1. Download and set up Java JDK 6
 2. Download and set up Jetty(6,7,8 tested) or Tomcat(7 tested).
 3. Download and set up PostrgeSQL(8.4,9.1 tested) 
 	    and set up user: "postgresql"; password "postgresql"; database "postgresql";
